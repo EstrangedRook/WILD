@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Textures/Projectiles/Arrows/Wooden_Arrow/Wooden_Arrow.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Entities/Projectiles/Arrow/Arrow.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 1.0
+height = 0.5
+
+[node name="Arrow" type="Area2D"]
+gravity = 9.8
+collision_layer = 4
+collision_mask = 10
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+rotation = 0.785398
+texture = ExtResource( 1 )
+offset = Vector2( -4, 4.5 )
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource( 1 )
+[connection signal="body_entered" from="." to="." method="_on_Arrow_body_entered"]
