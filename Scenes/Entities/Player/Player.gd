@@ -27,6 +27,7 @@ var just_jumped = 0 # If the player just jumped
 var surface_timer = 0 # Coyote time timer
 
 func _physics_process(delta):
+	print(Engine.get_frames_per_second())
 	Inputs()
 	Movement(Get_X_Input(), delta)
 	$Body.Update(1, moving, Get_Jump_State(), looking_direction, direction)

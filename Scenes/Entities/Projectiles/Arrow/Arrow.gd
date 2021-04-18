@@ -3,7 +3,7 @@ extends Area2D
 export var mass = 0.5
 
 var launched = false
-var velocity = Vector2(0,0)
+var motion = Vector2(0,0)
 var pierce_target
 var decay_timer = 500
 var drop_ignore_timer = 10
@@ -15,11 +15,11 @@ func _ready():
 func _physics_process(delta):
 	if launched:
 		if drop_ignore_timer <= 0: 
-			velocity += gravity_vec*gravity*mass
+			motion += gravity_vec*gravity*mass
 		else: 
 			drop_ignore_timer -= 1
-		position+= velocity*delta
-		rotation = velocity.angle()
+		position+= motion*delta
+		rotation = motion.angle()
 		if pierce_target:
 			position = global_position - pierce_target.global_position
 			$CollisionShape2D.disabled = true
@@ -41,10 +41,10 @@ func _physics_process(delta):
 	else:
 		$Sprite.frame = 0
 		
-func Launch(initial_velocity: Vector2):
+func Launch(initial_motion: Vector2):
 	launched = true
 	$CollisionShape2D.disabled = false
-	velocity = initial_velocity
+	motion = initial_motion
 
 func _on_Arrow_body_entered(body):
 	if launched:

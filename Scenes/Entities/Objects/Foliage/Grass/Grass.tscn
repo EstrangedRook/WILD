@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scenes/Entities/Objects/Foliage/Grass/Grass.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Textures/Objects/Foliage/Grass/Grass.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Textures/Noise/Wind.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Shaders/Foliage_Shader_1.shader" type="Shader" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 3, 4 )
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 4 )
+shader_param/intensity = 5.0
+shader_param/speed = 2.0
+shader_param/global_position = null
+shader_param/NOISE_PATTERN = ExtResource( 3 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Shuffle_Left"
+length = 0.4
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 10, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -5, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 )
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Shuffle_Right"
+length = 0.4
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, -10, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 5, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 )
+}
+
+[node name="Grass" type="Area2D"]
+position = Vector2( 83.8669, 44.0078 )
+collision_layer = 32
+collision_mask = 29
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 2 )
+texture = ExtResource( 2 )
+vframes = 2
+hframes = 8
+frame = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Shuffle_Left = SubResource( 3 )
+anims/Shuffle_Right = SubResource( 4 )
+[connection signal="area_entered" from="." to="." method="_on_Grass_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Grass_body_entered"]

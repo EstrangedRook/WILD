@@ -14,6 +14,8 @@ var slash_launch_strength = 75
 var preparing_primary_strike = false
 var preparing_secondary_strike = false
 
+onready var slash = preload("res://Scenes/Entities/Projectiles/Slash/Sword_Slash/Sword_Slash.tscn")
+
 func Update(looking_direction, direction):
 	$Primary_Body.Update(direction, looking_direction, preparing_primary_strike, slash_timer, slash_speed)
 	$Secondary_Body.Update(direction, looking_direction, preparing_secondary_strike)
@@ -34,7 +36,6 @@ func Primary_Release(direction, looking_direction, moving_velocity):
 		return
 	preparing_primary_strike = false
 	var power = float(float(slash_charge) / float(slash_charge_speed)) * float(slash_launch_strength)
-	var slash = load("res://Scenes/Entities/Projectiles/Slash/Sword_Slash/Sword_Slash.tscn")
 	var temp_slash = slash.instance()
 	var launch_vector = Vector2.ZERO
 	var shoot_angle = 0

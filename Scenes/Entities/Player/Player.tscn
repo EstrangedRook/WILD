@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scenes/Entities/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Textures/Entities/Races/Kobold/Kobold.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/Entities/Tools/Great_Weapons/Iron_Greatsword/Iron_Greatsword.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Entities/Tools/Bows/Wooden_Bow/Wooden_Bow.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Entities/Player/Animation_Controller.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -323,7 +323,7 @@ script = ExtResource( 4 )
 texture = ExtResource( 2 )
 vframes = 6
 hframes = 12
-frame = 1
+frame = 51
 
 [node name="Animation_Player" type="AnimationPlayer" parent="Body"]
 anims/Dead = SubResource( 2 )
