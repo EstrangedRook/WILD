@@ -65,7 +65,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 2 ]
+"values": [ 3 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -88,12 +88,15 @@ tracks/0/keys = {
 script = ExtResource( 2 )
 
 [node name="Body" type="Node2D" parent="."]
-position = Vector2( 0, -4 )
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Sprite" type="Sprite" parent="Body"]
 texture = ExtResource( 1 )
 hframes = 4
+frame = 1
 
 [node name="Animation_Player" type="AnimationPlayer" parent="Body"]
 anims/Idle = SubResource( 1 )

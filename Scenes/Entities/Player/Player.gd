@@ -71,3 +71,12 @@ func _process_tool():
 	var _tool = get_node_or_null("Body/Tool")
 	if _tool: _tool.Update(looking_direction, direction)
 	self._tool = _tool
+	
+func _determine_tool_direction_lock():
+	if _tool:
+		if _tool.direction_lock:
+			var mouse_pos = rad2deg(get_local_mouse_position().angle())
+			if mouse_pos > -90 && mouse_pos <= 90:
+				direction = 1
+			else:
+				direction = 0

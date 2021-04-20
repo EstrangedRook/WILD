@@ -98,6 +98,7 @@ func _determine_look_input():
 
 func _determine_action_input():
 	if parent._tool:
+		parent._determine_tool_direction_lock()
 		if Input.is_action_pressed("BUTTON_A"):
 			parent._tool.Primary(parent.direction, parent.looking_direction, parent.motion)
 		if Input.is_action_just_released("BUTTON_A"):

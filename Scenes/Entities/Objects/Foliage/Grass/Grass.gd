@@ -15,7 +15,7 @@ func make_shader_unique(pos):
 
 
 func _on_Grass_body_entered(body):
-	var direction = position.x - body.position.x
+	var direction = body.motion.x
 	if direction > 0:
 		$AnimationPlayer.play("Shuffle_Left")
 	else:
@@ -23,7 +23,7 @@ func _on_Grass_body_entered(body):
 
 
 func _on_Grass_area_entered(area):
-	var direction = position.x - area.position.x
+	var direction = area.motion.x
 	if direction > 0:
 		$AnimationPlayer.play("Shuffle_Left")
 	else:

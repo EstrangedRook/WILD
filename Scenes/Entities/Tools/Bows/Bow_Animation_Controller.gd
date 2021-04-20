@@ -1,9 +1,5 @@
 extends Node2D
 
-const UP_ANGLE = -45
-const MIDDLE_ANGLE = 0
-const DOWN_ANGLE = 45
-
 enum {NONE = 0, UP = 1, DOWN = 2}
 var previous_animation = ""
 var charge_state = 0.0
@@ -43,22 +39,22 @@ func Tool_Animation(preparing_strike):
 
 func Tool_Position(looking_direction: int, preparing_strike):
 	if preparing_strike:
-		position.y = 4
-		position.x = 5
-		if looking_direction == UP:
-			position.y = 0
-			position.x = 4
-			$Sprite.rotation = deg2rad(UP_ANGLE)
-		elif looking_direction == DOWN:
-			position.y = 8
-			position.x = 4
-			$Sprite.rotation = deg2rad(DOWN_ANGLE)
-		else:
-			$Sprite.rotation = deg2rad(MIDDLE_ANGLE)
+		$Sprite.position = get_parent().bow_ready_offset
+		
+		position.x = 0
+		position.y = 5
+		
+		var mouse_angle = rad2deg(get_local_mouse_position().angle())
+		mouse_angle = deg2rad(mouse_angle)
+		rotation += mouse_angle
+		
 	else:
-		position.y = 9
-		position.x = -2
-		$Sprite.rotation = deg2rad(110)
+		$Sprite.position = get_parent().bow_idle_offset
+		
+		position.x = 0
+		position.y = 0
+		
+		rotation = deg2rad(110)
 	
 func Idle():
 	Play_Animation("Idle")
