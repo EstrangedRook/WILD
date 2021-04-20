@@ -1,5 +1,8 @@
 extends TileMap
 
+func _ready():
+	visible = false
+
 func Generate_Objects():
 	var grass = load("res://Scenes/Entities/Objects/Foliage/Grass/Grass.tscn")
 	var foliage_map = get_parent().Foreground_Foliage_Map

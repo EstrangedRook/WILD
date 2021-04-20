@@ -15,11 +15,13 @@ public class Water_Body : Polygon2D
     private float[] right_deltas = new float[1000];
     private Line2D surface_1;
     private Line2D surface_2;
+    private ConvexPolygonShape2D collider;
 
     public override void _Ready()
     {
         surface_1 = GetNode<Line2D>("Water_Surface_1");
         surface_2 = GetNode<Line2D>("Water_Surface_2");
+        collider = (ConvexPolygonShape2D)GetNode<CollisionShape2D>("Collider/CollisionShape2D").Shape;
         Vector2[] polygon_body = new Vector2[length+2];
         segment_spread = Math.Abs(bounds[1].x - bounds[0].x)/(length-1);
         for(int i = 0; i < length; i++)
@@ -34,6 +36,7 @@ public class Water_Body : Polygon2D
         polygon_body[length] = bounds[1];
         polygon_body[length+1] = new Vector2(bounds[0].x, bounds[1].y);
         Polygon = polygon_body;
+        collider.Points = polygon_body;
     }
 
     public override void _Process(float delta)
@@ -50,33 +53,18 @@ public class Water_Body : Polygon2D
             surface_1.SetPointPosition(i, water_surface[i].position);
             surface_2.SetPointPosition(i, new Vector2(water_surface[i].position.x, water_surface[i].position.y + 1)); 
         }
-
-        for(int j = 0; j < length; j++)
-        { 
-            if(j > 0)
+        for(int i = 0; i < 8; i++)
+        {
+            for(int j = 0; j < length; j++)
             {
-                left_deltas[j] = water_spread * (water_surface[j].position.y - water_surface[j - 1]. position.y);
-                water_surface[j - 1].velocity.y += left_deltas[j];
-            }
-            if(j < length - 1)
-            {
-                right_deltas[j] = water_spread * (water_surface[j].position.y - water_surface[j + 1]. position.y);
-                water_surface[j + 1].velocity.y += right_deltas[j];
-            }
-
-            if(j > 0)
-            {
-                water_surface[j-1].position.y += left_deltas[j];
-            }
-            if(j < length - 1)
-            {
-                water_surface[j+1].position.y += right_deltas[j];
+                Process_Deltas(j);
+                Process_Deltas((length-1) - j);
             }
         }
-
         polygon_body[length] = bounds[1];
         polygon_body[length+1] = new Vector2(bounds[0].x, bounds[1].y);
         Polygon = polygon_body;
+        collider.Points = polygon_body;
     }
 
     public void Splash(int index, float power)
@@ -84,6 +72,28 @@ public class Water_Body : Polygon2D
         if(index >= 0 && index < length)
         {
             water_surface[index].velocity.y = power;
+        }
+    }
+
+    public void Process_Deltas(int index)
+    {
+        if(index > 0)
+        {
+            left_deltas[index] = water_spread * (water_surface[index].position.y - water_surface[index - 1]. position.y);
+            water_surface[index - 1].velocity.y += left_deltas[index];
+        }
+        if(index < length - 1)
+        {
+            right_deltas[index] = water_spread * (water_surface[index].position.y - water_surface[index + 1]. position.y);
+            water_surface[index + 1].velocity.y += right_deltas[index];
+        }
+        if(index > 0)
+        {
+            water_surface[index-1].position.y += left_deltas[index];
+        }
+        if(index < length - 1)
+        {
+            water_surface[index+1].position.y += right_deltas[index];
         }
     }
 }
@@ -102,12 +112,8 @@ public class Water_Segment_Poly
     public void Update(float dampening, float tension, float target_height)
     {
         float k = tension;
-        float x = position.y + target_height;
-        float acceleration = -k * x;
-        acceleration -= dampening * velocity.y;
-
+        float x = position.y - target_height;
+        velocity.y += (-k * x) - (velocity.y * dampening);
         position += velocity;
-        velocity.y += acceleration;
     }
-
 }
