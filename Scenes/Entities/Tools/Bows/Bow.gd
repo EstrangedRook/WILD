@@ -11,11 +11,12 @@ var launch_power = 300.0
 var current_arrow
 
 var preparing_primary_strike = false
+var preparing_secondary_strike = false
 
-func Update(looking_direction, direction):
-	$Body.Update(!direction, looking_direction, preparing_primary_strike)
+func Update( direction):
+	$Body.Update(!direction, preparing_primary_strike)
 	
-func Primary(direction, looking_direction, moving_velocity):
+func Primary(direction, moving_velocity):
 	if draw_strength <= 0:
 		var arrow = load("res://Scenes/Entities/Projectiles/Arrow/Wooden_Arrow/Wooden_Arrow.tscn")
 		current_arrow = arrow.instance()
@@ -26,7 +27,7 @@ func Primary(direction, looking_direction, moving_velocity):
 		draw_strength += 1
 	$Body.charge_state = float(float(draw_strength) / float(max_draw_strength))
 		
-func Primary_Release(direction, looking_direction, moving_velocity):
+func Primary_Release(direction, moving_velocity):
 	if current_arrow && draw_strength > 0:
 		preparing_primary_strike = false
 		if draw_strength < max_draw_strength/2:
@@ -49,10 +50,10 @@ func Primary_Release(direction, looking_direction, moving_velocity):
 		
 		draw_strength = 0	
 
-func Secondary(direction, looking_direction, motion):
+func Secondary(direction, motion):
 	pass
 	
-func Secondary_Release(irection, looking_direction, motion):
+func Secondary_Release(irection, motion):
 	pass
 
 func Complete():
@@ -60,3 +61,8 @@ func Complete():
 	if current_arrow:
 		complete = false
 	return complete
+	
+func is_striking():
+	if preparing_primary_strike || preparing_secondary_strike:
+		return true
+	return false

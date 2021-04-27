@@ -75,6 +75,19 @@ public class Water_Body : Polygon2D
         }
     }
 
+    public Vector2 Water_Column_Dimensions(int index)
+    {
+        if(index <= 0)
+        {
+            index = 1;
+        }
+        else if(index >= length)
+        {
+            index = length - 2;
+        }
+        return new Vector2(water_surface[index].position.y + GlobalPosition.y, bounds[1].y + GlobalPosition.y);
+    }
+
     public void Process_Deltas(int index)
     {
         if(index > 0)

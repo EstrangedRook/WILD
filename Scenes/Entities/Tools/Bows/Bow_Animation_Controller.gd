@@ -6,9 +6,9 @@ var charge_state = 0.0
 
 onready var Animation_Player = $Animation_Player
 
-func Update(direction, looking_direction, preparing_strike):
+func Update(direction, preparing_strike):
 	Tool_Animation(preparing_strike)
-	Tool_Position(looking_direction, preparing_strike)
+	Tool_Position(preparing_strike)
 
 func Play_Animation(ID):
 	Animation_Player.play(ID)
@@ -37,7 +37,7 @@ func Tool_Animation(preparing_strike):
 	else:
 		Idle()
 
-func Tool_Position(looking_direction: int, preparing_strike):
+func Tool_Position(preparing_strike):
 	if preparing_strike:
 		$Sprite.position = get_parent().bow_ready_offset
 		

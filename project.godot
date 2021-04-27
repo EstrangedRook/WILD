@@ -24,6 +24,10 @@ config/name="WILD"
 run/main_scene="res://Scenes/Levels/Debug/Debug.tscn"
 config/icon="res://icon.png"
 
+[debug]
+
+settings/fps/force_fps=60
+
 [display]
 
 window/size/width=320
@@ -78,6 +82,10 @@ BUTTON_B={
 2d_physics/layer_3="Player_Projectiles"
 2d_physics/layer_4="Soft_Hostile_Projectiles"
 2d_physics/layer_5="Hard_Hostile_Projectiles"
+2d_physics/layer_6="Object"
+2d_physics/layer_7="Background_Object"
+2d_physics/layer_8="Foreground_Object"
+2d_physics/layer_9="Liquid"
 
 [rendering]
 
