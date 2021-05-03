@@ -1,4 +1,5 @@
 extends Area2D
+class_name Grass
 
 var rng = RandomNumberGenerator.new()
 
@@ -34,10 +35,8 @@ func _on_Grass_body_entered(body):
 func _on_Grass_body_exited(body):
 	entities.erase(body)
 
-
 func _on_Grass_area_entered(area):
 	entities[area] = area
-
 
 func _on_Grass_area_exited(area):
 	entities.erase(area)

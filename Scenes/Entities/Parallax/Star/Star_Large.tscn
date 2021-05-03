@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Textures/Parallax/Stars/Large_Star.png" type="Texture" id=1]
+
+[node name="Star_Large" type="Sprite"]
+z_index = 4
+texture = ExtResource( 1 )
+hframes = 6

@@ -39,7 +39,7 @@ public class Water_Body : Polygon2D
         collider.Points = polygon_body;
     }
 
-    public override void _Process(float delta)
+    public override void _PhysicsProcess(float delta)
     {
         Vector2[] polygon_body = new Vector2[length+2];
         for(int i = 0; i < length; i++)

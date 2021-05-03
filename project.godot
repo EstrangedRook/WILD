@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "Grass",
+"language": "GDScript",
+"path": "res://Scenes/Entities/Objects/Foliage/Grass/Grass.gd"
+}, {
 "base": "Node",
 "class": "StateMachine",
 "language": "GDScript",
 "path": "res://Scripts/Misc/State_Machine.gd"
 } ]
 _global_script_class_icons={
+"Grass": "",
 "StateMachine": ""
 }
 
@@ -23,6 +29,10 @@ _global_script_class_icons={
 config/name="WILD"
 run/main_scene="res://Scenes/Levels/Debug/Debug.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://Scripts/Singletons/Global.gd"
 
 [debug]
 
@@ -90,5 +100,5 @@ BUTTON_B={
 [rendering]
 
 quality/2d/use_pixel_snap=true
-environment/default_clear_color=Color( 0.0392157, 0.643137, 0.85098, 1 )
+environment/default_clear_color=Color( 0.0980392, 0.117647, 0.235294, 1 )
 environment/default_environment="res://default_env.tres"
