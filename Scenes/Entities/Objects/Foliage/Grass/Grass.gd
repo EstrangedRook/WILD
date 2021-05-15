@@ -8,10 +8,11 @@ var impulse = 0
 
 func _ready():
 	rng.randomize()
-	var frame = rng.randi_range(0, 12)
-	if frame > 10:
-		frame = rng.randi_range(11, 15)
-	$Sprite.frame = frame
+	var rand = rng.randi_range(1, 12)
+	if rand > 10:
+		rand = rng.randi_range(11, 16)
+	var sprite_directory_holder = "res://Assets/Textures/Objects/Foliage/Grass/"
+	$Sprite.texture = load(sprite_directory_holder + "Grass_" + str(rand) + ".png")
 
 func make_shader_unique(pos):
 	$Sprite.material = $Sprite.material.duplicate()

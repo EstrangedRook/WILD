@@ -47,7 +47,7 @@ func _process(delta):
 				current_impulse = (i.motion / 2)
 		impulse.x = lerp(impulse.x, current_impulse.x, 0.1)
 		impulse.y = lerp(impulse.y, current_impulse.y, 0.1)
-		$Trunk/Leaves.material.set_shader_param("impulse", impulse)
+		$Trunk/Leaves.material.set_shader_param("impulse", impulse.x)
 
 
 func _on_Leaves_Collider_body_entered(body):

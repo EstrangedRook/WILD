@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scenes/Entities/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Textures/Entities/Races/Kobold/Kobold.png" type="Texture" id=2]
@@ -6,8 +6,9 @@
 [ext_resource path="res://Scenes/Entities/Player/Animation_Controller.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/Entities/Player/State_Machine.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/Entities/Entity Components/Physics/Physics2D.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Textures/Lights/Light.png" type="Texture" id=7]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -33,7 +34,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -59,7 +60,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -85,7 +86,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -111,7 +112,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -138,7 +139,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -164,7 +165,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -190,7 +191,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -216,7 +217,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=9]
 length = 0.9
 loop = true
 step = 0.15
@@ -245,7 +246,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, -2 ), Vector2( 0, -1 ), Vector2( 0, 0 ), Vector2( 0, -2 ), Vector2( 0, -1 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=10]
 length = 0.9
 loop = true
 step = 0.15
@@ -274,7 +275,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, -2 ), Vector2( 0, -1 ), Vector2( 0, 0 ), Vector2( 0, -2 ), Vector2( 0, -1 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=11]
 length = 0.9
 loop = true
 step = 0.15
@@ -303,7 +304,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, -2 ), Vector2( 0, -1 ), Vector2( 0, 0 ), Vector2( 0, -2 ), Vector2( 0, -1 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 3, 5 )
 
 [node name="Player" type="KinematicBody2D"]
@@ -323,29 +324,36 @@ script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="Body"]
 texture = ExtResource( 2 )
-vframes = 6
 hframes = 12
+vframes = 6
 
 [node name="Animation_Player" type="AnimationPlayer" parent="Body"]
-anims/Dead = SubResource( 2 )
-anims/Dead_End = SubResource( 3 )
-anims/Falling = SubResource( 4 )
-anims/Falling_End = SubResource( 5 )
-anims/Idle = SubResource( 6 )
-anims/Jump_Up = SubResource( 7 )
-anims/Look_Down = SubResource( 8 )
-anims/Look_Up = SubResource( 9 )
-anims/Walk = SubResource( 10 )
-anims/Walk_Down = SubResource( 11 )
-anims/Walk_Up = SubResource( 12 )
+anims/Dead = SubResource( 1 )
+anims/Dead_End = SubResource( 2 )
+anims/Falling = SubResource( 3 )
+anims/Falling_End = SubResource( 4 )
+anims/Idle = SubResource( 5 )
+anims/Jump_Up = SubResource( 6 )
+anims/Look_Down = SubResource( 7 )
+anims/Look_Up = SubResource( 8 )
+anims/Walk = SubResource( 9 )
+anims/Walk_Down = SubResource( 10 )
+anims/Walk_Up = SubResource( 11 )
 
 [node name="Tool" parent="Body" instance=ExtResource( 3 )]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2( 0, -8 )
 current = true
 smoothing_enabled = true
 smoothing_speed = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 5.9 )
-shape = SubResource( 1 )
+shape = SubResource( 12 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 0, -0.111362 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 7 )
+mode = 2

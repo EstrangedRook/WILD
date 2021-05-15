@@ -1,0 +1,8 @@
+C:\Users\pixir\Desktop\WILD\.mono\temp\bin\ExportDebug\WILD.dll
+C:\Users\pixir\Desktop\WILD\.mono\temp\bin\ExportDebug\WILD.pdb
+C:\Users\pixir\Desktop\WILD\.mono\temp\obj\ExportDebug\WILD.csprojAssemblyReference.cache
+C:\Users\pixir\Desktop\WILD\.mono\temp\obj\ExportDebug\WILD.AssemblyInfoInputs.cache
+C:\Users\pixir\Desktop\WILD\.mono\temp\obj\ExportDebug\WILD.AssemblyInfo.cs
+C:\Users\pixir\Desktop\WILD\.mono\temp\obj\ExportDebug\WILD.csproj.CoreCompileInputs.cache
+C:\Users\pixir\Desktop\WILD\.mono\temp\obj\ExportDebug\WILD.dll
+C:\Users\pixir\Desktop\WILD\.mono\temp\obj\ExportDebug\WILD.pdb

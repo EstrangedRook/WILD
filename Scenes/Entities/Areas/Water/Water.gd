@@ -45,4 +45,3 @@ func _on_Collider_area_exited(area):
 		return
 	index /= $Water_Body.segment_spread
 	$Water_Body.Splash(index, area.motion.y/50)
-
