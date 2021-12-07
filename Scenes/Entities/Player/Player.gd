@@ -25,7 +25,7 @@ func _ready():
 	Global.player_camera = $Camera2D
 
 func _physics_process(delta):
-	print(Engine.get_frames_per_second())
+	#print(Engine.get_frames_per_second())
 	#print(_determine_is_in_water())
 	pass
 

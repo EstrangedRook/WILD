@@ -20,11 +20,11 @@ var star_large = load("res://Scenes/Entities/Parallax/Star/Star_Large.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for i in int(no_of_low_stars):
-		generate_star(height*0.35, 0, 0)
+		_generate_star(height*0.35, 0, 0)
 	for i in int(no_of_med_stars):
-		generate_star(height*0.70, height*0.35, 2)
+		_generate_star(height*0.70, height*0.35, 1)
 	for i in int(no_of_high_stars):
-		generate_star(height-1, height*0.70, 3)
+		_generate_star(height-1, height*0.70, 3)
 	stars_in_use.clear()
 
 func _physics_process(delta):
@@ -40,9 +40,9 @@ func _physics_process(delta):
 			stars_in_use.erase(i.star_id)
 			twinkling_stars.erase(i)
 		else:
-			i.update()
+			i._update()
 
-func generate_star(max_height, min_height, star_tier):
+func _generate_star(max_height, min_height, star_tier):
 		max_height = height-max_height
 		min_height = height - min_height
 		var progress = false
@@ -86,7 +86,7 @@ class Twinkling_Star:
 		twinkle_speed = speed
 		dead_time = d_time
 		
-	func update():
+	func _update():
 		if twinkle_value <= 0:
 			if dead_time > 0:
 				dead_time -= 1
